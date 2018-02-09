@@ -6,3 +6,6 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+.byebug_history
+.rspec_status
