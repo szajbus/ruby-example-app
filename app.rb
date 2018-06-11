@@ -14,6 +14,7 @@ module App extend self
   attr_reader :load_paths
   @load_paths = %W(
     #{root}/app
+    #{root}/lib
   )
 
   attr_reader :log_level
