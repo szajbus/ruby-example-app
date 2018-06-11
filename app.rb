@@ -17,6 +17,11 @@ module App extend self
     #{root}/lib
   )
 
+  attr_reader :eager_load_paths
+  @eager_load_paths = %W(
+    #{root}/app
+  )
+
   attr_reader :log_level
   @log_level = ENV['LOG_LEVEL'] || 'debug'
 
@@ -30,10 +35,19 @@ module App extend self
     end
 
     setup_autoload
+    eager_load
     run_initializers
   end
 
   private
+
+  def eager_load
+    eager_load_paths.each do |dir|
+      Dir.glob(root.join(dir, '**', '*.rb')).each do |path|
+        require path
+      end
+    end
+  end
 
   def setup_autoload
     ActiveSupport::Dependencies.autoload_paths += @load_paths
