@@ -30,7 +30,7 @@ module App extend self
     end
 
     setup_autoload
-    load_config
+    run_initializers
   end
 
   private
@@ -39,8 +39,8 @@ module App extend self
     ActiveSupport::Dependencies.autoload_paths += @load_paths
   end
 
-  def load_config
-    Dir["#{File.join(@root, 'config', '*.rb')}"].each do |file|
+  def run_initializers
+    Dir["#{File.join(@root, 'config', 'initializers', '*.rb')}"].each do |file|
       require file
     end
   end
