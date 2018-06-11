@@ -9,7 +9,7 @@ module App extend self
   @env = ENV['APP_ENV'] || 'development'
 
   attr_reader :root
-  @root = File.expand_path('..', __FILE__)
+  @root = Pathname.new(File.expand_path('..', __FILE__))
 
   attr_reader :load_paths
   @load_paths = %W(
