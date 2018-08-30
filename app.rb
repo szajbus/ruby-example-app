@@ -35,8 +35,8 @@ module App extend self
     end
 
     setup_autoload
-    eager_load
     run_initializers
+    eager_load
   end
 
   private
