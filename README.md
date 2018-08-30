@@ -12,7 +12,7 @@ Any file put into `app` folder is autoloaded.
 
 * configuration
 
-`config/*.rb` files are automalically required on boot.
+`config/initializers/*.rb` files are automalically required on boot.
 
 * logging
 
