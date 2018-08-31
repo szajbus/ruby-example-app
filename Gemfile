@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activesupport'
+gem 'dotenv'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

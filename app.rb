@@ -3,6 +3,7 @@ require 'active_support'
 require 'active_support/dependencies'
 require 'active_support/inflector'
 require 'active_support/core_ext/hash/keys'
+require 'dotenv'
 
 module App extend self
   attr_reader :env
@@ -35,6 +36,7 @@ module App extend self
     end
 
     setup_autoload
+    load_env
     run_initializers
     eager_load
   end
@@ -51,6 +53,17 @@ module App extend self
 
   def setup_autoload
     ActiveSupport::Dependencies.autoload_paths += @load_paths
+  end
+
+  def load_env
+    paths = [
+      App.root.join(".env.#{App.env}.local"),
+      (App.root.join('.env.local') unless App.env == 'test'),
+      App.root.join(".env.#{App.env}"),
+      App.root.join('.env')
+    ].compact
+
+    Dotenv.load(*paths)
   end
 
   def run_initializers

@@ -4,17 +4,15 @@ This is a simple, lightweight boilerplate for ruby (non-rails) applications.
 
 ## What's included
 
-* `activesupport` for autoloading dependencies
-
-Any file put into `app` folder is autoloaded.
+* `activesupport` for autoloading dependencies and files in `app` folder
 
 * `rspec` & `guard` for testing
 
-* configuration
+* `dotenv` for `ENV` configuration
 
-`config/initializers/*.rb` files are automalically required on boot.
+* initializers automalically required from `config/initializers/*.rb` on boot
 
-* logging
+* logging with `App.logger`
 
 ## How to start
 
